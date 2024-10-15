@@ -2,7 +2,7 @@
 
 La mejor aplicación para organizarte.
 
-<img src='src/assets/images/Logo.png' width='100%' >
+<img src='src/assets/images/Logo.png' width='50%' >
 
 Landing demo: [https://organizer-eta.vercel.app/](https://organizer-eta.vercel.app/)
 
@@ -65,6 +65,7 @@ Si el backend está en otro puerto, cambia la API_URL en el archivo environments
 
 Autor
 @1auti
+<img src='src/assets/images/app.webp' width='100%' >
 
 ![Captura de Organizer](./assets/app.webp)
 
