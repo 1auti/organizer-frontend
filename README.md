@@ -67,7 +67,4 @@ Autor
 @1auti
 <img src='src/assets/images/app.webp' width='100%' >
 
-![Captura de Organizer](./assets/app.webp)
-
-
 
