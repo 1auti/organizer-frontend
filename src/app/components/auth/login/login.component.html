@@ -1,0 +1,64 @@
+<section>
+    <div>
+        <form [formGroup]="loginForm" class="form" novalidate (ngSubmit)="login()">
+            <div class="title">
+                <h1>Organizer</h1>
+            </div>
+
+            <mat-form-field>
+            <mat-label>Nombre de usuario</mat-label>
+            <input
+                formControlName="username"
+                type="text"
+                name="username"
+                matInput
+                placeholder="Ingrese su usuario"
+                autocomplete="off">
+
+            @if (loginForm.controls.username.invalid) {
+                <mat-error>{{getUsernameErrorMessage()}}</mat-error>
+            }
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input
+                    formControlName="password"
+                    name="password"
+                    matInput
+                    [type]="hidePassword ? 'password' : 'text'"
+                    placeholder="Ingrese su contraseña">
+                <button
+                    mat-icon-button
+                    matSuffix
+                    type="button"
+                    (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword"
+                    class="button-view-password">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                @if (loginForm.controls.password.invalid) {
+                    <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+                }
+            </mat-form-field>
+
+            <button class="button-submit" type="submit">
+                @if (status==='loading') {
+                    <mat-spinner color="accent" [diameter]="15"></mat-spinner>
+                } @else {
+                    Iniciar Sesión
+                }
+            </button>
+        </form>
+
+        <footer class="footer">
+            <p>¿No tienes una cuenta?</p>
+            <button class="button-login" (click)="openRegister()">Registrarse</button>
+        </footer>
+    </div>
+
+    <div class="svg-container">
+        <!-- <img src="/assets/svg/auth.svg" alt="auth-svg"> -->
+        <img src="/assets/svg/undraw_to_the_moon_re_q21i.svg" alt="auth.svg">
+    </div>
+</section>

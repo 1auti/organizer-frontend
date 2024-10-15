@@ -1,0 +1,40 @@
+<section>
+    <header>
+        <button class="btn-menu" type="button" mat-button (click)="drawer.toggle()" [ngClass]="{'btn-menu-opened': drawer.opened === true}">
+            <img class="img-menu" src="/assets/svg/menu.svg" alt="menu">
+        </button>
+        
+        @if(folderSelected$()) {
+            <h1 class="folder-name" (click)="openFolder(folderSelected$()!)">
+                {{folderSelected$()?.name}}
+            </h1>
+        } @else if(isEmpty()) {
+            <h1 class="no-folders"> No tienes carpetas aún </h1>
+        }
+        <button class="add-note" (click)="!folderSelected$() ? createFolder() : createNote()">
+            <p> {{ !folderSelected$() ? 'Crear carpeta': 'Crear nota'}} </p>
+            <img class="add-note-svg" src="/assets/svg/add-note.svg" alt="add">
+        </button>
+    </header>
+
+    @if(!folderSelected$() || isEmpty()) {
+        <button class="folder-empty-container" (click)="!folderSelected$() ? createFolder() : createNote()">
+            <img class="svg-folder-empty" src="/assets/svg/no-notes.svg" alt="folder-empty">
+            <p>{{ !folderSelected$() ? 'Crear carpeta' : 'La carpeta está vacía' }}</p>
+        </button>
+    }
+
+    <div class="notes-container">
+        @for (note of userNotes$(); track $index) {
+            <div class="note-card" (click)="openNote(note)">
+                <header>
+                    <h2>{{ note.title }}</h2>
+                    <!-- <button>
+                        <img class="edit-note-svg" src="/assets/svg/edit.svg" alt="edit">
+                    </button> -->
+                </header>
+                <p>{{ note.description }}</p>
+            </div>
+        }
+    </div>    
+</section>

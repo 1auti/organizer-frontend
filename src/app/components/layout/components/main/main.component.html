@@ -1,0 +1,94 @@
+<mat-drawer-container class="container" autosize [hasBackdrop]="isOver ? 'true' : 'false'">
+    <mat-drawer #drawer class="side-bar" [mode]="isOver ? 'over' : 'side'" [opened]="hideDrawer ? false : true">
+      <header>
+        <h3>Organizer</h3>
+      </header>
+      <div class="content">
+        <div class="ul-container">
+            <ul class="profile-container">
+                <strong>USUARIO</strong>
+                <li class="side-li profile" cdkOverlayOrigin #menuOverlay="cdkOverlayOrigin" (click)="isOpenUserMenu = !isOpenUserMenu" >
+                    <a class="ancor-profile">
+                        Hola, <span> {{user$()?.username}} </span> 👋
+                    </a>
+                    <div class="menu-user">
+                        <button class="btn-menu">
+                            <img class="svg img-menu" src="/assets/svg/menu.svg" alt="menu" [ngClass]="{'selected-menu' : isOpenUserMenu === true}">
+                        </button>
+                        <ng-template
+                            cdkConnectedOverlay
+                            [cdkConnectedOverlayOrigin]="menuOverlay"
+                            [cdkConnectedOverlayOpen]="isOpenUserMenu"
+                            (overlayOutsideClick)="isOpenUserMenu = !isOpenUserMenu">
+                            <ul class="overlay">
+                                <p>
+                                    <span class="username-overlay">{{user$()?.username}}</span>
+                                    <span class="email-overlay">{{user$()?.email}} </span>
+                                </p>
+                                <li><a class="ancor-overlay" (click)="openProfile()">Cuenta</a></li>
+                                <li><a class="ancor-overlay" (click)="singOff()">Cerrar sesión</a></li>
+                            </ul>
+                        </ng-template>
+                    </div>
+                </li>
+            </ul>
+            <ul class="folders-container">
+                <strong>CARPETAS</strong>
+                @for (folder of userFolders$(); track $index) {
+                    <li class="side-li folder-container">
+                        <a class="ancor-folder"
+                        #folderMenuOverlay
+                        (click)="selectFolder(folder)"
+                        (mouseenter)="currentFolder = $index" (mouseleave)="currentFolder = -1">
+                            <img class="svg" [src]="(currentFolder === $index || folderSelected$()?.id === folder.id) ? openedFolder : closedFolder" alt="folder">
+                            {{ folder.name }}
+                        </a>
+                        <button
+                            class="btn-menu menu-folders"
+                            (click)="openFolderMenu(folder.id)"
+                            >
+                            <img class="img-menu" src="/assets/svg/menu.svg" alt="menu" [ngClass]="{'selected-menu' : folder.id === folderToOpenOverlay}">
+                        </button>
+                        <ng-template
+                            cdkConnectedOverlay
+                            [cdkConnectedOverlayOrigin]="folderMenuOverlay"
+                            [cdkConnectedOverlayOpen]="folder.id === folderToOpenOverlay"
+                            [cdkConnectedOverlayHasBackdrop]="true"
+                            (overlayOutsideClick)="openFolderMenu(-1)">
+                            <ul class="overlay">
+                                <p>
+                                    <span class="username-overlay">{{folder.name}}</span>
+                                </p>
+                                <li><a class="ancor-overlay" (click)="openFolder(folder)">Editar</a></li>
+                            </ul>
+                        </ng-template>
+                    </li>
+                }
+            </ul>
+            <button class="action btn-folders" (click)="createFolder()">
+                <img class="svg" src="/assets/svg/add-folder.svg" alt="folder">
+                Crear carpeta
+            </button>
+
+            <!-- <button class="action btn-folders">
+                <img class="svg" src="/assets/svg/archived-folder.svg" alt="folder">
+                Archivado 
+            </button> -->
+        </div>
+        <div class="end-actions">
+            <a class="action ancor-actions" href="mailto:diegoinostroza00@gmail.com">
+                Contacto
+            </a>
+            <!-- <a class="action ancor-actions">
+                Reportar bug
+            </a> -->
+        </div>
+    </div>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <app-notes [drawer]="drawer"></app-notes>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<!-- <app-footer></app-footer> -->

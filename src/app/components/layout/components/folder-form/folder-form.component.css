@@ -1,0 +1,62 @@
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items:baseline;
+    justify-content: center;
+}
+
+@media(width<= 850px) {
+    .content{
+        padding: 10px;
+    }
+    form{
+        width: 70vw;
+        .input-name {
+            width: 100%;
+            font-size: 25px;
+        }
+    }
+}
+
+@media(width<= 500px) {
+    .content{
+        height: 180px;
+    }
+    form{
+        .input-name {
+            font-size: 15px;
+        }
+    }
+}
+
+mat-dialog-actions{
+    padding: 10px;
+}
+h3{
+    padding: 10px 20px;
+}
+form{
+    height: 150px;
+    padding: 0;
+}
+input{
+    background-color: transparent;
+    width: 600px;
+    border: .5px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 20px 20px;
+}
+.input-name{
+    margin: 0 0 16px;
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    height: 75px;
+}
+.input-title:hover{
+    border: .5px solid rgba(135, 135, 135, 0.637);
+}
+.svg{
+    height: 23px;
+}

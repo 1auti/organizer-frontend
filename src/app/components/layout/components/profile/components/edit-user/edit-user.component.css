@@ -1,0 +1,75 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 0;
+    background-color: #252525;
+}
+@media(width <= 600px) {
+    .form {
+        width: 100%;
+        mat-form-field {
+            width: 90%;
+        }
+        .button-submit{
+            width: 90%;
+        }
+        .button-delete{
+            width: 90%;
+        }
+    }
+}
+@media(width <= 355px) {
+    .form {
+        input, mat-label{
+            font-size: 12px;
+    
+        }
+    }
+}
+@media(width <= 375px) {
+    mat-error{
+        display: none;
+    }
+}
+mat-form-field {
+    margin: 0 30px;
+    height: 75px;
+    width: 400px;
+    border: non;
+    margin-bottom: 8px;
+}
+mat-label{
+    color: white;
+}
+
+button {
+    height: 50px;
+    cursor: pointer;
+    border: none;
+}
+.button-submit{
+    color: white;
+    padding: 15px 0;
+    background-color: #c2175b;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-delete{
+    color: white;
+    padding: 15px 0;
+    background-color: #c21717;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-view-password{
+    margin-right: 5px;
+    background-color: transparent;
+    color: white;
+}
