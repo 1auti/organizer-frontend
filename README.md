@@ -2,7 +2,7 @@
 
 La mejor aplicación para organizarte.
 
-![Organizer Screenshot](https://organizer-eta.vercel.app/)
+<img src='./src/assets/Logo.png' width='100%' >
 
 Landing demo: [https://organizer-eta.vercel.app/](https://organizer-eta.vercel.app/)
 
